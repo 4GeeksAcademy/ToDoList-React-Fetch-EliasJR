@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Modal from "./modal";
 
 const TodoList = () => {
     const [newTodo, setNewTodo] = useState('');
@@ -100,23 +99,43 @@ const TodoList = () => {
     return (
         <div className="container w-75 mt-5" id="todoList">
             <div className="input-group shadow rounded p-3">
-                <input className="form-control form-control-lg" type="text" placeholder="Añadir tarea" onChange={e => setNewTodo(e.target.value)} value={newTodo} onKeyDown={addTodo}/>
-            </div>          
+                <input 
+                    className="form-control form-control-lg" 
+                    type="text" 
+                    placeholder="Añadir tarea" 
+                    onChange={e => setNewTodo(e.target.value)} 
+                    value={newTodo} 
+                    onKeyDown={addTodo}
+                />
+            </div>
+            
             <div className="shadow rounded p-3 mt-5 w-100">
                 <div className="text-center">
                     <h1>Lista de Tareas</h1>
                     <ul className="list-group mt-3">
                         {todos.map((todo, index) => (
-                            <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                            <li 
+                                key={index} 
+                                className="list-group-item d-flex justify-content-between align-items-center"
+                            >
                                 {todo.label}
-                                <button className="btn btn-danger btn-sm" onClick={() => deleteTodo(index)}>Eliminar</button>
+                                <button 
+                                    className="btn btn-danger btn-sm"
+                                    onClick={() => deleteTodo(index)}
+                                >
+                                    Eliminar
+                                </button>
                             </li>
                         ))}
                     </ul>
                 </div>
             </div>
             <div className="text-center mt-5">
-                <button type="button" className="btn btn-danger shadow" onClick={deleteTodos}>
+                <button 
+                    type="button" 
+                    className="btn btn-danger" 
+                    onClick={deleteTodos}
+                >
                     Eliminar todas las tareas
                 </button>
             </div>
